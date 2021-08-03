@@ -1,17 +1,17 @@
-const express = require('express');
-const cors = require('cors');
+// const express = require('express');
+// const cors = require('cors');
 
-const reminders = require('./routes/reminders');
+// const reminders = require('./routes/reminders');
 
-const server = express();
+// const server = express();
 
-server.use(cors());
-server.use(express.json());
+// server.use(cors());
+// server.use(express.json());
 
-server.use('/api/recipes/', reminders);
+// server.use('/api/recipes/', reminders);
 
-server.get('/', (req, res) =>
-  res.status(200).json("Welcome to the Reminder App Server!")
-);
+// server.get('/', (req, res) =>
+//   res.status(200).json("Welcome to the Reminder App Server!")
+// );
 
-module.exports = server;
+// module.exports = server;

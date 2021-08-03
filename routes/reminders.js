@@ -7,9 +7,8 @@ const router = express.Router();
 
 router.get('/all', async (req, res) => {
   try {
-    const users = await db('users'); // getting all users
-    const usersPlus = await Promise.all(
-      users.map(async user => {
+    const reminders = await Promise.all(
+      reminders.map(async user => {
         // mapping over users
         const allergies = await db('allergies') // adding allergies to mapped user
           .join('users-allergies', 'allergies.id', 'users-allergies.allergy_id')
