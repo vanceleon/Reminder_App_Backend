@@ -4,6 +4,7 @@ const port = 8000;
 
 
 app.get('/', (req, res) => {
+  console.log('res',res);
   res.send('Hello World!');
 });
 
