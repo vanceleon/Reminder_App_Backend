@@ -4,34 +4,78 @@ const faker = require('faker');
 const _ = require('lodash');
 const port = 8000;
 
-const dummmyReminders = faker.lorem.text();
+const fakerReminders = faker.git.commitMessage();
 
 app.get('/', (req, res) => {
   const count = 1;
   if (!count) {
-    console.log('in 400 error')
+    console.log('in 400 error');
     return res
       .status(400)
       .send({ errorMsg: 'count query parameter is missing' });
-  } else if (dummmyReminders) {
-    console.log('in 200 ')
-    // const dummmyReminders = faker.lorem.text();
+  } else if (fakerReminders) {
+    console.log('in 200 status');
     const uuid = faker.datatype.uuid();
-
     const reminderObject = {
       id: uuid,
-      reminder: dummmyReminders,
+      reminder: fakerReminders,
     };
-    console.log("in reminders object")
-    console.log(reminderObject)
+    console.log(reminderObject);
     res.status(200).json(reminderObject);
   } else {
-    console.log('in 500 error')
+    console.log('in 500 error');
     err => {
       console.log('error', err);
-      res.status(500).json({ messgae: 'Error getting the information' });
+      res
+        .status(500)
+        .json({
+          message: 'error, server has crashed running get all reminders',
+        });
     };
   }
+});
+
+app.get('/', (req, res) => {
+  const count = 1;
+  if (!count) {
+    console.log('in 400 error');
+    return res
+      .status(400)
+      .send({ errorMsg: 'count query parameter is missing' });
+  } else if (fakerReminders) {
+    console.log('in 200 status');
+    const uuid = faker.datatype.uuid();
+    const reminderObject = {
+      id: uuid,
+      reminder: fakerReminders,
+    };
+    console.log(reminderObject);
+    res.status(200).json(reminderObject);
+  } else {
+    console.log('in 500 error');
+    err => {
+      console.log('error', err);
+      res
+        .status(500)
+        .json({
+          message: 'error, server has crashed running get all reminders',
+        });
+    };
+  }
+});
+
+app.get('', (req, res) => {
+  todos
+    .get()
+    .then(todos => {
+      if (todos) {
+        res.status(200).json(todos);
+      }
+    })
+    .catch(err => {
+      console.log('err', err);
+      res.status(500).json({ message: 'Server Error' });
+    });
 });
 
 app.listen(port, () => {
