@@ -11,14 +11,14 @@ module.exports = {
   development: {
     client: "sqlite3",
     connection: {
-      filename: "./data/dev.sqlite3"
+      filename: "./db/dev.sqlite3"
     },
     useNullAsDefault: true,
     migrations: {
-      directory: "./data/migrations"
+      directory: "./db/migrations"
     },
     seeds: {
-      directory: "./data/seeds"
+      directory: "./db/seeds"
     }
   },
   production: {
@@ -29,10 +29,10 @@ module.exports = {
       max: 10
     },
     migrations: {
-      directory: "./data/migrations"
+      directory: "./db/migrations"
     },
     seeds: {
-      directory: "./data/seeds"
+      directory: "./db/seeds"
     }
   }
 };
