@@ -1,38 +1,44 @@
-const localPgConnection = {
-  host: "localhost",
-  database: "reminder",
-  user: "vance",
-  password: process.env.DATABASE_PASSWORD
-};
-
-const dbConnection = process.env.DATABASE_URL || localPgConnection;
+// Update with your config settings.
 
 module.exports = {
+
   development: {
-    client: "sqlite3",
+    client: 'sqlite3',
     connection: {
-      filename: "./db/dev.sqlite3"
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: "./db/migrations"
-    },
-    seeds: {
-      directory: "./db/seeds"
+      filename: './dev.sqlite3'
     }
   },
-  production: {
-    client: "pg",
-    connection: dbConnection,
+
+  staging: {
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      directory: "./db/migrations"
+      tableName: 'knex_migrations'
+    }
+  },
+
+  production: {
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
-    seeds: {
-      directory: "./db/seeds"
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'knex_migrations'
     }
   }
+
 };
